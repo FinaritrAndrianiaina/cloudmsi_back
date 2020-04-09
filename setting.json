@@ -1,0 +1,22 @@
+{
+    "database": {
+        "user": "root",
+        "host": "localhost",
+        "pwd": "Sarah1234",
+        "dbname": "Test"
+    },
+    "staticpath": [],
+    "bodyParser": {
+        "urlencoded": true,
+        "json": true
+    },
+    "cors": true,
+    "session": {
+        "active": true,
+        "secret": "SECRET",
+        "resave": true,
+        "saveUninitialized": true,
+        "cookieSecure": false
+    },
+    "port": 8080
+}
