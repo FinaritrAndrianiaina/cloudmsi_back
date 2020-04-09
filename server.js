@@ -1,14 +1,21 @@
-express = require('express')
-app = new express()
+var express = require("express")
+var utils = require("./module/utils")
+var asyncLib = require("async")
+var Configuration = require("./module/config")
+var config = new Configuration("config.json")
+var db = config.Database
+var bodyParser = require("body-parser")
+var cors = require("cors")
+var app = express()
+var bcrypt = require("bcrypt")
 
-app.use(express.static("public"))
-app.set('view engine', 'ejs')
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-    res.render("index.ejs");
-});
+require('./CRUD/delete')(app, db, utils, asyncLib, bcrypt)
+require('./CRUD/get')(app, db, utils, asyncLib, bcrypt)
+require('./CRUD/post')(app, db, utils, asyncLib, bcrypt)
+require('./CRUD/update')(app, db, utils, asyncLib, bcrypt)
 
-app.listen(8080, () => {
-    console.log('Connexion au server effectué...');
-});
-
+app.listen(config.port)
