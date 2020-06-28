@@ -14,11 +14,12 @@ module.exports = {
         })
     },
 
-    sendError: function (res, obj, msg) {
-        obj.result = null
-        obj.status = false
-        obj.msg = msg
-        res.json(obj)
+    sendError: function (res, code=400, msg) {
+        res.json({
+            status:false,
+            msg:msg,
+            code:code
+        })
     },
 
     sendSuccess: function (res, obj, msg) {
