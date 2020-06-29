@@ -14,7 +14,7 @@ module.exports = {
         })
     },
 
-    sendError: function (res, code=400, msg) {
+    sendError: function (res, code=400, msg="Connexion Error.") {
         res.json({
             status:false,
             msg:msg,
@@ -22,9 +22,8 @@ module.exports = {
         })
     },
 
-    sendSuccess: function (res, obj, msg) {
+    sendSuccess: function (res, obj) {
         obj.status = true
-        obj.msg = msg
         res.json(obj)
     }
 }
