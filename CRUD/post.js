@@ -30,6 +30,7 @@ module.exports = function (app, utils,models,uploads) {
             utils.sendSuccess(res,obj)
         })
         .catch(()=>{
+            fs.unlinkSync(path)
             utils.sendError(res)
         })
 
