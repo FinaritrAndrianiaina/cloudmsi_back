@@ -13,4 +13,4 @@ require('./CRUD/get')(app, utils,models,uploads)
 require('./CRUD/post')(app, utils,models,uploads)
 require('./CRUD/update')(app, utils,models,uploads)
 
-app.listen(setting.port)
+app.listen(process.env.PORT || setting.port)
