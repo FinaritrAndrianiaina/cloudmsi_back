@@ -5,7 +5,12 @@
         "pwd": "Sarah1234",
         "dbname": "Test"
     },
-    "staticpath": [],
+    "staticpath": [
+        {
+            "path": "uploads",
+            "name": "/uploads"
+        }
+    ],
     "bodyParser": {
         "urlencoded": true,
         "json": true
