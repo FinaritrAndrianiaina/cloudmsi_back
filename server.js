@@ -4,10 +4,13 @@ var utils = require("./module/utils")
 var Setting = require("./module/config")
 var setting = new Setting("setting.json", app, express)
 var db = setting.Database
+var models=require("./models")
+var multer=require("multer")
+var uploads=multer({dest:'uploads'})
 
-require('./CRUD/delete')(app, db, utils)
-require('./CRUD/get')(app, db, utils)
-require('./CRUD/post')(app, db, utils)
-require('./CRUD/update')(app, db, utils)
+require('./CRUD/delete')(app, utils,models,uploads)
+require('./CRUD/get')(app, utils,models,uploads)
+require('./CRUD/post')(app, utils,models,uploads)
+require('./CRUD/update')(app, utils,models,uploads)
 
 app.listen(setting.port)

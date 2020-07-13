@@ -1,4 +1,4 @@
-module.exports = function (app, db, utils) {
+module.exports = function (app, utils,models) {
     app.delete("/", (req, res) => {
         res.send("Connected")
     })
