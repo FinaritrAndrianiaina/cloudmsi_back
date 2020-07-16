@@ -15,6 +15,7 @@
                     "firstname : string",
                     "photo : string nullable"
                 ],
+                "headers":["none"],
                 "response":[
                     "username : string",
                     "email : string",
@@ -22,7 +23,19 @@
                     "firstname : string",
                     "photo : string nullable"
                 ]
-        
+            },
+            {
+                "route":"/user/token",
+                "description":"Connection URL for users.",
+                "format":"any",
+                "query":["none"],
+                "params":["none"],
+                "body":[
+                    "username : string",
+                    "password : string"
+                ],
+                "headers":["none"],
+                "response":["token :  string"]
             }
         ],
         "get":[
@@ -33,13 +46,16 @@
                 "query":["none"],
                 "params":["none"],
                 "body":["none"],
+                "headers":["authorization : token string"],
                 "response":[
                     "table[",
                     "---username:string",
                     "---email:string",
                     "---lastname:string",
                     "---firstname:string",
-                    "---photo:string nullable",
+                    "---photo:string",
+                    "---createdAt:date",
+                    "---updatedAt:date",
                     "]"
                 ]
             },
@@ -50,6 +66,7 @@
                 "query":["none"],
                 "params":["id:integer"],
                 "body":["none"],
+                "headers":["authorization : token string"],
                 "response":[
                     "table : [",
                     "---id : integer",
@@ -57,6 +74,8 @@
                     "---path : string",
                     "---size : double",
                     "---type : string",
+                    "---createdAt:date",
+                    "---updatedAt:date",
                     "]"
                 ]
             },
@@ -67,13 +86,88 @@
                 "query":["none"],
                 "params":["id : integer"],
                 "body":["none"],
+                "headers":["authorization : token string"],
                 "response":[
                     "username : string",
                     "email : string",
                     "lastname : string",
                     "firstname : string",
-                    "photo : string nullable"
+                    "photo : string nullable",
+                    "---createdAt:date",
+                    "---updatedAt:date"
                 ]
+            }
+        ],
+        "put":[
+            {
+                "route":"/user/:id",
+                "description":"Update user's data.",
+                "format":"any",
+                "query":["none"],
+                "params":["id : integer"],
+                "body":[
+                    "username : string",
+                    "firstname : string",
+                    "lastname : string",
+                    "email : string"
+                ],
+                "headers":["authorization : token string"],
+                "response":[
+                    "username : string",
+                    "firstname : string",
+                    "lastname : string",
+                    "email : string"
+                ]
+            },
+            {
+                "route":"/user/photo/:id",
+                "description":"Change the profile picture.",
+                "format":"FormData",
+                "query":["none"],
+                "params":["id : integer"],
+                "body":[
+                    "photo : File"
+                ],
+                "headers":["authorization : token string"],
+                "response":[
+                    "photo : string"
+                ]
+            },
+            {
+                "route":"/user/password/:id",
+                "description":"Change user's password.",
+                "format":"any",
+                "query":["none"],
+                "params":["id : integer"],
+                "body":[
+                    "password : string",
+                    "oldpassword : string"
+                ],
+                "headers":["authorization : token string"],
+                "response":["none"]
+            }
+
+        ],
+        "delete":[
+            {
+                "route":"/user/:id",
+                "description":"Delete one user.",
+                "format":"any",
+                "query":["none"],
+                "params":["id : integer"],
+                "body":["none"],
+                "headers":["authorization : token string"],
+                "response":["none"]
+            },
+            {
+                "route":"/user/file/:id",
+                "description":"Delete all user's files.",
+                "format":"any",
+                "query":["none"],
+                "params":["id : integer"],
+                "body":["none"],
+                "headers":["authorization : token string"],
+                "response":["none"]
             }
         ]
     },
@@ -89,6 +183,7 @@
                     "file : File",
                     "id_user : integer"
                 ],
+                "headers":["authorization : token string"],
                 "response":[
                     "name : string",
                     "path : string",
@@ -107,12 +202,15 @@
                 "query":["none"],
                 "params":["id:integer"],
                 "body":["none"],
+                "headers":["authorization : token string"],
                 "response":[
                     "id : integer",
                     "name : string",
                     "path : string",
                     "size : double",
-                    "type : string"
+                    "type : string",
+                    "createdAt:date",
+                    "updatedAt:date"
                 ]
             },
             {
@@ -122,6 +220,7 @@
                 "query":["none"],
                 "params":["none"],
                 "body":["none"],
+                "headers":["authorization : token string"],
                 "response":[
                     "table : [",
                     "---id : integer",
@@ -129,9 +228,28 @@
                     "---path : string",
                     "---size : double",
                     "---type : string",
+                    "---createdAt:date",
+                    "---updatedAt:date",
                     "]"
                 ]
             }
+        ],
+        "delete":[
+            {
+                "route":"/file/:id",
+                "description":"Delete one file.",
+                "format":"any",
+                "query":["none"],
+                "params":["id : integer"],
+                "body":["none"],
+                "headers":["authorization : token string"],
+                "response":["none"]
+            }
         ]
-    }
+    },
+    "response_obj":[
+        "msg : string (Message form server)",
+        "code : integer (HTTP code)",
+        "result : Object nullable (Object queried by the client)"
+    ]
 }
