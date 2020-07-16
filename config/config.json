@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "lztnvkxlhpnoih",
-    "password": "68d9564f76612e52c6517df4da843770c2d8966800b77190afa31fe76fe1de44",
-    "database": "d8cdfhvideodcf",
-    "host": "ec2-46-137-84-173.eu-west-1.compute.amazonaws.com",
+    "username": "postgres",
+    "password": "Sarah1234",
+    "database": "cloud_msi3",
+    "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": 0
   },

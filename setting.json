@@ -9,6 +9,10 @@
         {
             "path": "uploads",
             "name": "/uploads"
+        },
+        {
+            "path": "public",
+            "name": "/public"
         }
     ],
     "bodyParser": {

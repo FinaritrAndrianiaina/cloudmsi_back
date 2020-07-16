@@ -4,6 +4,7 @@ module.exports = function (app, utils,models,uploads) {
         var obj={result:req.body}
         models.User.create(obj.result)
         .then((data)=>{
+            obj.result.password=null
             utils.sendSuccess(res,obj)
         })
         .catch((err)=>{

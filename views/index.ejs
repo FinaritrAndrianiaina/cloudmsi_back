@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/framework/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/public/fontawesome-free-5.12.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <title>Cloud-MSI API DOCS</title>
+</head>
+<body ng-app="api-docs">
+
+    <nav>
+        <div class="nav-wrapper blue">
+            <ul class="left">
+                <h5 style="margin-left: 20px;">Cloud API Docs <i class="fa fa-cloud"></i></h5>
+              </ul>
+          <ul id="nav-mobile" class="right">
+              <li>
+                <a href="http://github.com/ElSombrero2/cloudmsi_back.git">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+              </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="container" ng-controller="docsCtrl">
+        <h4>User <i class="fa fa-user"></i></h4>
+        <div class="divider"></div><br>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">POST</div>
+                <div class="collapsible-body">
+                    <div class="methods" ng-repeat="item in data.user.post">  
+                        <ul>
+                            <li>
+                                <strong>Route : <span class="red-text">{{item.route}}</span></strong>
+                                <div class="divider"></div>
+                                <br>
+                            </li>
+                            <li>
+                                <strong>Description : {{item.description}}</strong>
+                            </li>
+                            <li>
+                                <strong>
+                                    Params : 
+                                </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.params'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Query : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.query'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Body : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.body'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Response : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.response'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <div class="divider"></div>
+                        <br>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">GET</div>
+                <div class="collapsible-body">
+                    <div class="methods" ng-repeat="item in data.user.get">  
+                        <ul>
+                            <li>
+                                <strong>Route : <span class="red-text">{{item.route}}</span></strong>
+                                <div class="divider"></div>
+                                <br>
+                            </li>
+                            <li>
+                                <strong>Description : {{item.description}}</strong>
+                            </li>
+                            <li>
+                                <strong>
+                                    Params : 
+                                </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.params'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Query : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.query'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Body : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.body'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Response : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.response'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <div class="divider"></div>
+                        <br>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <!--------------------------------------------------------------------------------->
+
+        <br>
+        <h4>File <i class="fa fa-file"></i></h4>
+        <div class="divider"></div><br>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">POST</div>
+                <div class="collapsible-body">
+                    <div class="methods" ng-repeat="item in data.file.post">  
+                        <ul>
+                            <li>
+                                <strong>Route : <span class="red-text">{{item.route}}</span></strong>
+                                <div class="divider"></div>
+                                <br>
+                            </li>
+                            <li>
+                                <strong>Description : {{item.description}}</strong>
+                            </li>
+                            <li>
+                                <strong>
+                                    Params : 
+                                </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.params'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Query : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.query'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Body : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.body'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Response : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.response'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <div class="divider"></div>
+                        <br>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">GET</div>
+                <div class="collapsible-body">
+                    <div class="methods" ng-repeat="item in data.file.get">  
+                        <ul>
+                            <li>
+                                <strong>Route : <span class="red-text">{{item.route}}</span></strong>
+                                <div class="divider"></div>
+                                <br>
+                            </li>
+                            <li>
+                                <strong>Description : {{item.description}}</strong>
+                            </li>
+                            <li>
+                                <strong>
+                                    Params : 
+                                </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.params'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Query : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.query'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <strong>Body : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.body'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>Response : </strong><br>
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <div ng-repeat='tmp in item.response'>
+                                            {{tmp}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <div class="divider"></div>
+                        <br>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <footer class="page-footer blue">
+        <div class="row">
+            <div class="col s12">
+              <h5 class="white-text">MSI Cloud API DOCS <i class="fa fa-cloud"></i></h5>
+              <p class="grey-text text-lighten-4">Documentation de l'API REST Du cloud MSI 3 APP.</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+          © 2020 Copyright MSI3
+        </div>
+    </footer>
+
+    <script src="/public/framework/jquery-3.4.1.min.js"></script>
+    <script src="/public/framework/angular.min.js"></script>
+    <script src="/public/fontawesome-free-5.12.0-web/js/all.min.js"></script>
+    <script src="/public/framework/materialize/js/materialize.min.js"></script>
+    <script src="/public/js/script.js"></script>
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

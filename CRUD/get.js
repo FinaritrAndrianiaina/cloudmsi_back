@@ -1,6 +1,10 @@
 
 module.exports = function (app, utils,models) {
 
+    app.get('/', (req, res) => {
+        res.render("index.ejs");
+    });
+
     app.get("/user", (req, res) => {
         var obj={result:{}}
         models.User.findAll()

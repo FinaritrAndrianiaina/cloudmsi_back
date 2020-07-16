@@ -1,0 +1,137 @@
+{
+    "user":{
+        "post":[
+            {
+                "route":"/user",
+                "description":"Create a new User.",
+                "format":"any",
+                "query":["none"],
+                "params":["none"],
+                "body":[
+                    "username : string",
+                    "password : string",
+                    "email : string",
+                    "lastname : string",
+                    "firstname : string",
+                    "photo : string nullable"
+                ],
+                "response":[
+                    "username : string",
+                    "email : string",
+                    "lastname : string",
+                    "firstname : string",
+                    "photo : string nullable"
+                ]
+        
+            }
+        ],
+        "get":[
+            {
+                "route":"/user",
+                "description":"Get all existing users.",
+                "format":"any",
+                "query":["none"],
+                "params":["none"],
+                "body":["none"],
+                "response":[
+                    "table[",
+                    "---username:string",
+                    "---email:string",
+                    "---lastname:string",
+                    "---firstname:string",
+                    "---photo:string nullable",
+                    "]"
+                ]
+            },
+            {
+                "route":"/user/file/:id",
+                "description":"Get all user's file with his unique Id.",
+                "format":"any",
+                "query":["none"],
+                "params":["id:integer"],
+                "body":["none"],
+                "response":[
+                    "table : [",
+                    "---id : integer",
+                    "---name : string",
+                    "---path : string",
+                    "---size : double",
+                    "---type : string",
+                    "]"
+                ]
+            },
+            {
+                "route":"/user/:id",
+                "description":"Get an user with his unique Id.",
+                "format":"any",
+                "query":["none"],
+                "params":["id : integer"],
+                "body":["none"],
+                "response":[
+                    "username : string",
+                    "email : string",
+                    "lastname : string",
+                    "firstname : string",
+                    "photo : string nullable"
+                ]
+            }
+        ]
+    },
+    "file":{
+        "post":[
+            {
+                "route":"/file",
+                "description":"Create a new File.",
+                "format":"FormData",
+                "query":["none"],
+                "params":["none"],
+                "body":[
+                    "file : File",
+                    "id_user : integer"
+                ],
+                "response":[
+                    "name : string",
+                    "path : string",
+                    "size : double",
+                    "type : string",
+                    "id_user : integer"
+                ]
+        
+            }
+        ],
+        "get":[
+            {
+                "route":"/file/:id",
+                "description":"Get a file with his unique id.",
+                "format":"any",
+                "query":["none"],
+                "params":["id:integer"],
+                "body":["none"],
+                "response":[
+                    "id : integer",
+                    "name : string",
+                    "path : string",
+                    "size : double",
+                    "type : string"
+                ]
+            },
+            {
+                "route":"/file",
+                "description":"Get all files.",
+                "format":"any",
+                "query":["none"],
+                "params":["none"],
+                "body":["none"],
+                "response":[
+                    "table : [",
+                    "---id : integer",
+                    "---name : string",
+                    "---path : string",
+                    "---size : double",
+                    "---type : string",
+                    "]"
+                ]
+            }
+        ]
+    }
+}
