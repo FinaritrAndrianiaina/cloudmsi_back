@@ -34,9 +34,15 @@ module.exports = {
             return true
         }catch{return false}
     },
-    verifyHeaders(headers){
+    verifyHeaders:function(headers){
         if(headers.authorization)
-           if(this.verifyToken(headers.authorization))return true
-        return false;
+               if(this.verifyToken(headers.authorization))return true
+            return false;
+    },
+    allowAccess:function(){
+        return (req,res,next)=>{
+           if(this.verifyHeaders(req.headers))next()
+           else this.sendError(res,HTTP_STATUS.UNAUTHORIZED)
+        }
     }
 }
