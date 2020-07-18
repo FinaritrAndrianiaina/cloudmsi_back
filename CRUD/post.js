@@ -12,7 +12,10 @@ module.exports = function (app, utils,models,uploads) {
             obj.result.password=null
             utils.sendSuccess(res,obj,HTTP_STATUS.CREATED)
         })
-        .catch((err)=>{utils.sendError(res)})
+        .catch((err)=>{
+            if(err.original.code=='23505')utils.sendError(res,HTTP_STATUS.CONFLICT)
+            else utils.sendError(res)
+        })
     })
 
     app.post('/user/token',(req,res)=>{
