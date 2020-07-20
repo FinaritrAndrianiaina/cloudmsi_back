@@ -69,7 +69,7 @@ module.exports = function (app, utils,models,uploads) {
         })
     })
 
-    app.post("/project",(req,res)=>{
+    app.post("/project",utils.allowAccess(),(req,res)=>{
         var obj={result:req.body}
         var link="https://api.github.com/repos/"+req.body.git_username+"/"+req.body.name
         require("axios").get(link)

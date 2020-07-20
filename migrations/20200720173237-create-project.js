@@ -9,12 +9,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       git_username: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       id_user: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
