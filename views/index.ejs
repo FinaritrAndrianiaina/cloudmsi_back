@@ -45,6 +45,7 @@
         <!--------------------------------------------------------------------------------->
 
         <br>
+
         <h4>File <i class="fa fa-file"></i></h4>
         <div class="divider"></div><br>
         <ul class="collapsible">
@@ -67,6 +68,31 @@
                 </div>
             </li>
         </ul>
+        
+        <br>
+
+        <h4>Project <i class="fa fa-plane"></i></h4>
+        <div class="divider"></div><br>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header">POST</div>
+                <div class="collapsible-body">
+                    <ng-methods data="data.project.post"></ng-methods>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">GET</div>
+                <div class="collapsible-body">
+                    <ng-methods data="data.project.get"></ng-methods>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">DELETE</div>
+                <div class="collapsible-body">
+                    <ng-methods data="data.project.delete"></ng-methods>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="main container">
@@ -76,10 +102,13 @@
         <h5>Responses:</h5>
         <div class="divider"></div>
         <br>
-        <div class="card blue-grey darken-1">
+        <div class="card blue-grey darken-4">
             <div class="card-content white-text">
                 <div ng-repeat='tmp in data.response_obj'>
-                    <div ng-bind="tmp"></div>
+                    <span ng-bind="tmp.name"></span> : 
+                    <span ng-bind="tmp.content" 
+                          style="font-style: italic;" 
+                          class="red-text"></span>
                 </div>
             </div>
         </div> 

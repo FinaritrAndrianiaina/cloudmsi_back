@@ -5,37 +5,39 @@
                 "route":"/user",
                 "description":"Create a new User.",
                 "format":"any",
-                "query":["none"],
-                "params":["none"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
                 "body":[
-                    "username : string",
-                    "password : string",
-                    "email : string",
-                    "lastname : string",
-                    "firstname : string",
-                    "photo : string nullable"
+                    {"name":"username","content":"string"},
+                    {"name":"password","content":"string"},
+                    {"name":"email","content":"string"},
+                    {"name":"lastname","content":"string"},
+                    {"name":"firstname","content":"string"},
+                    {"name":"photo","content":"string nullable"}
                 ],
-                "headers":["none"],
+                "headers":[{"name":"none","content":"void"}],
                 "response":[
-                    "username : string",
-                    "email : string",
-                    "lastname : string",
-                    "firstname : string",
-                    "photo : string nullable"
+                    {"name":"username","content":"string"},
+                    {"name":"email","content":"string"},
+                    {"name":"lastname","content":"string"},
+                    {"name":"firstname","content":"string"},
+                    {"name":"photo","content":"string nullable"}
                 ]
             },
             {
                 "route":"/user/token",
                 "description":"Connection URL for users.",
                 "format":"any",
-                "query":["none"],
-                "params":["none"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
                 "body":[
-                    "username : string",
-                    "password : string"
+                    {"name":"username","content":"string"},
+                    {"name":"password","content":"string"}
                 ],
-                "headers":["none"],
-                "response":["token :  string"]
+                "headers":[{"name":"none","content":"void"}],
+                "response":[
+                    {"name":"token","content":"string"}
+                ]
             }
         ],
         "get":[
@@ -43,58 +45,70 @@
                 "route":"/user",
                 "description":"Get all existing users.",
                 "format":"any",
-                "query":["none"],
-                "params":["none"],
-                "body":["none"],
-                "headers":["authorization : token string"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
                 "response":[
-                    "table[",
-                    "---username:string",
-                    "---email:string",
-                    "---lastname:string",
-                    "---firstname:string",
-                    "---photo:string",
-                    "---createdAt:date",
-                    "---updatedAt:date",
-                    "]"
+                    {"name":"username","content":"string"},
+                    {"name":"email","content":"string"},
+                    {"name":"lastname","content":"string"},
+                    {"name":"firstname","content":"string"},
+                    {"name":"photo","content":"string"},
+                    {"name":"createdAt","content":"date"},
+                    {"name":"updatedAt","content":"date"},
+                    {"name":"--Note--","content":"The response is an Array of Objet"}
                 ]
             },
             {
                 "route":"/user/file/:id",
                 "description":"Get all user's file with his unique Id.",
                 "format":"any",
-                "query":["none"],
-                "params":["id:integer"],
-                "body":["none"],
-                "headers":["authorization : token string"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
                 "response":[
-                    "table : [",
-                    "---id : integer",
-                    "---name : string",
-                    "---path : string",
-                    "---size : double",
-                    "---type : string",
-                    "---createdAt:date",
-                    "---updatedAt:date",
-                    "]"
+                    {"name":"id","content":"integer"},
+                    {"name":"name","content":"string"},
+                    {"name":"path","content":"string"},
+                    {"name":"size","content":"double"},
+                    {"name":"type","content":"string"},
+                    {"name":"id_user","content":"integer"},
+                    {"name":"createdAt","content":"date"},
+                    {"name":"updatedAt","content":"date"},
+                    {"name":"--Note--","content":"The response is an Array of Objet"}
+                ]
+            },
+            {
+                "route":"/user/project/:id",
+                "description":"Get all user's file with his unique Id.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[
+                    {"name":"url","content":"string"},
+                    {"name":"--Note--","content":"The response is an Array of Objet"}
                 ]
             },
             {
                 "route":"/user/:id",
                 "description":"Get an user with his unique Id.",
                 "format":"any",
-                "query":["none"],
-                "params":["id : integer"],
-                "body":["none"],
-                "headers":["authorization : token string"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
                 "response":[
-                    "username : string",
-                    "email : string",
-                    "lastname : string",
-                    "firstname : string",
-                    "photo : string nullable",
-                    "---createdAt:date",
-                    "---updatedAt:date"
+                    {"name":"username","content":"string"},
+                    {"name":"email","content":"string"},
+                    {"name":"lastname","content":"string"},
+                    {"name":"firstname","content":"string"},
+                    {"name":"photo","content":"string"},
+                    {"name":"createdAt","content":"date"},
+                    {"name":"updatedAt","content":"date"}
                 ]
             }
         ],
@@ -103,48 +117,44 @@
                 "route":"/user/:id",
                 "description":"Update user's data.",
                 "format":"any",
-                "query":["none"],
-                "params":["id : integer"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
                 "body":[
-                    "username : string",
-                    "firstname : string",
-                    "lastname : string",
-                    "email : string"
+                    {"name":"username","content":"string"},
+                    {"name":"email","content":"string"},
+                    {"name":"lastname","content":"string"},
+                    {"name":"firstname","content":"string"}
                 ],
-                "headers":["authorization : token string"],
+                "headers":[{"name":"authorization","content":"string"}],
                 "response":[
-                    "username : string",
-                    "firstname : string",
-                    "lastname : string",
-                    "email : string"
+                    {"name":"username","content":"string"},
+                    {"name":"email","content":"string"},
+                    {"name":"lastname","content":"string"},
+                    {"name":"firstname","content":"string"}
                 ]
             },
             {
                 "route":"/user/photo/:id",
                 "description":"Change the profile picture.",
                 "format":"FormData",
-                "query":["none"],
-                "params":["id : integer"],
-                "body":[
-                    "photo : File"
-                ],
-                "headers":["authorization : token string"],
-                "response":[
-                    "photo : string"
-                ]
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"photo","content":"File"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"photo","content":"File"}]
             },
             {
                 "route":"/user/password/:id",
                 "description":"Change user's password.",
                 "format":"any",
-                "query":["none"],
-                "params":["id : integer"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
                 "body":[
-                    "password : string",
-                    "oldpassword : string"
+                    {"name":"password","content":"string"},
+                    {"name":"oldpassword","content":"string"}
                 ],
-                "headers":["authorization : token string"],
-                "response":["none"]
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
             }
 
         ],
@@ -153,21 +163,31 @@
                 "route":"/user/:id",
                 "description":"Delete one user.",
                 "format":"any",
-                "query":["none"],
-                "params":["id : integer"],
-                "body":["none"],
-                "headers":["authorization : token string"],
-                "response":["none"]
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
             },
             {
                 "route":"/user/file/:id",
                 "description":"Delete all user's files.",
                 "format":"any",
-                "query":["none"],
-                "params":["id : integer"],
-                "body":["none"],
-                "headers":["authorization : token string"],
-                "response":["none"]
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
+            },
+            {
+                "route":"/user/project/:id",
+                "description":"Delete one file.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
             }
         ]
     },
@@ -177,19 +197,19 @@
                 "route":"/file",
                 "description":"Create a new File.",
                 "format":"FormData",
-                "query":["none"],
-                "params":["none"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
                 "body":[
-                    "file : File",
-                    "id_user : integer"
+                    {"name":"file","content":"File"},
+                    {"name":"id_user","content":"integer"}
                 ],
-                "headers":["authorization : token string"],
+                "headers":[{"name":"authorization","content":"string"}],
                 "response":[
-                    "name : string",
-                    "path : string",
-                    "size : double",
-                    "type : string",
-                    "id_user : integer"
+                    {"name":"name","content":"string"},
+                    {"name":"path","content":"string"},
+                    {"name":"size","content":"double"},
+                    {"name":"type","content":"string"},
+                    {"name":"id_user","content":"integer"}
                 ]
         
             }
@@ -199,38 +219,39 @@
                 "route":"/file/:id",
                 "description":"Get a file with his unique id.",
                 "format":"any",
-                "query":["none"],
-                "params":["id:integer"],
-                "body":["none"],
-                "headers":["authorization : token string"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
                 "response":[
-                    "id : integer",
-                    "name : string",
-                    "path : string",
-                    "size : double",
-                    "type : string",
-                    "createdAt:date",
-                    "updatedAt:date"
+                    {"name":"id","content":"integer"},
+                    {"name":"name","content":"string"},
+                    {"name":"path","content":"string"},
+                    {"name":"size","content":"double"},
+                    {"name":"type","content":"string"},
+                    {"name":"id_user","content":"integer"},
+                    {"name":"createdAt","content":"date"},
+                    {"name":"updatedAt","content":"date"}
                 ]
             },
             {
                 "route":"/file",
                 "description":"Get all files.",
                 "format":"any",
-                "query":["none"],
-                "params":["none"],
-                "body":["none"],
-                "headers":["authorization : token string"],
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
                 "response":[
-                    "table : [",
-                    "---id : integer",
-                    "---name : string",
-                    "---path : string",
-                    "---size : double",
-                    "---type : string",
-                    "---createdAt:date",
-                    "---updatedAt:date",
-                    "]"
+                    {"name":"id","content":"integer"},
+                    {"name":"name","content":"string"},
+                    {"name":"path","content":"string"},
+                    {"name":"size","content":"double"},
+                    {"name":"type","content":"string"},
+                    {"name":"id_user","content":"integer"},
+                    {"name":"createdAt","content":"date"},
+                    {"name":"updatedAt","content":"date"},
+                    {"name":"--Note--","content":"The response is an Array of Objet"}
                 ]
             }
         ],
@@ -239,17 +260,63 @@
                 "route":"/file/:id",
                 "description":"Delete one file.",
                 "format":"any",
-                "query":["none"],
-                "params":["id : integer"],
-                "body":["none"],
-                "headers":["authorization : token string"],
-                "response":["none"]
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
+            }
+        ]
+    },
+    "project":{
+        "post":[
+            {
+                "route":"/project",
+                "description":"Create a new File.",
+                "format":"FormData",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
+                "body":[
+                    {"name":"git_username","content":"string"},
+                    {"name":"id_user","content":"integer"}
+                ],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[
+                    {"name":"url","content":"string"}
+                ]
+        
+            }
+        ],
+        "get":[
+            {
+                "route":"/project/:id",
+                "description":"Get a file with his unique id.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[
+                    {"name":"url","content":"string"}
+                ]
+            }
+        ],
+        "delete":[
+            {
+                "route":"/project/:id",
+                "description":"Delete one file.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
             }
         ]
     },
     "response_obj":[
-        "msg : string (Message form server)",
-        "code : integer (HTTP code)",
-        "result : Object nullable (Object queried by the client)"
+        {"name":"msg","content":"string (message from server)"},
+        {"name":"code","content":"integer (HTTP code)"},
+        {"name":"result","content":"Object nullable (Object queried by the client)"}
     ]
 }

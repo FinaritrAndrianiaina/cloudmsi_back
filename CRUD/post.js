@@ -68,5 +68,17 @@ module.exports = function (app, utils,models,uploads) {
             utils.sendError(res)
         })
     })
+
+    app.post("/project",(req,res)=>{
+        var obj={result:req.body}
+        var link="https://api.github.com/repos/"+req.body.git_username+"/"+req.body.name
+        require("axios").get(link)
+        .then(()=>{
+            models.Project.create(req.body)
+            .then(()=>{utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)})
+            .catch(()=>{utils.sendError(res)})
+        })
+        .catch(()=>{utils.sendError(res,HTTP_STATUS.NOT_FOUND)})
+    })
     
 }

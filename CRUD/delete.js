@@ -10,6 +10,12 @@ module.exports = function (app, utils,models) {
         .catch(()=>{utils.sendError(res)})
     })
 
+    app.delete("/user/project/:id",utils.allowAccess(), (req, res) => {
+        models.Project.destroy({where:{idUser:req.params.id}})
+        .then(()=>{utils.sendSuccess(res,{},HTTP_STATUS.ACCEPTED)})
+        .catch(()=>{utils.sendError(res)})
+    })
+
     app.delete("/file/:id",utils.allowAccess(), (req, res) => {
         asyncLib.waterfall([
             function(next){
@@ -46,5 +52,11 @@ module.exports = function (app, utils,models) {
                 .catch(()=>{utils.sendError(res)})
             }
         ])
+    })
+
+    app.delete("/project/:id",utils.allowAccess(), (req, res) => {
+        models.Project.destroy({where:{id:req.params.id}})
+        .then(()=>{utils.sendSuccess(res,{},HTTP_STATUS.ACCEPTED)})
+        .catch(()=>{utils.sendError(res)})
     })
 }   
