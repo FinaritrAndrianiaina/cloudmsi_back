@@ -272,7 +272,7 @@
         "post":[
             {
                 "route":"/project",
-                "description":"Create a new File.",
+                "description":"Create a new Project.",
                 "format":"FormData",
                 "query":[{"name":"none","content":"void"}],
                 "params":[{"name":"none","content":"void"}],
@@ -290,7 +290,7 @@
         "get":[
             {
                 "route":"/project/:id",
-                "description":"Get a file with his unique id.",
+                "description":"Get a project with his unique id.",
                 "format":"any",
                 "query":[{"name":"none","content":"void"}],
                 "params":[{"name":"id","content":"integer"}],
@@ -299,15 +299,105 @@
                 "response":[
                     {"name":"url","content":"string"}
                 ]
+            },
+            {
+                "route":"/project/task/:id",
+                "description":"Get all tasks in a project.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[
+                    {"name":"id","content":"integer"},
+                    {"name":"name","content":"string"},
+                    {"name":"description","content":"text"},
+                    {"name":"id_project","content":"integer"},
+                    {"name":"createdAt","content":"date"},
+                    {"name":"updatedAt","content":"date"}
+                ]
             }
         ],
         "delete":[
             {
                 "route":"/project/:id",
-                "description":"Delete one file.",
+                "description":"Delete one project.",
                 "format":"any",
                 "query":[{"name":"none","content":"void"}],
                 "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
+            },
+            {
+                "route":"/project/task/:id",
+                "description":"Delete all task from the project.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
+            }
+        ]
+    },
+    "task":{
+        "post":[
+            {
+                "route":"/task",
+                "description":"Create a new task.",
+                "format":"FormData",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
+                "body":[
+                    {"name":"name","content":"string"},
+                    {"name":"description","content":"text"},
+                    {"name":"id_project","content":"integer"}
+                ],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[
+                    {"name":"name","content":"string"},
+                    {"name":"description","content":"text"},
+                    {"name":"id_project","content":"integer"}
+                ]
+        
+            }
+        ],
+        "delete":[
+            {
+                "route":"/task/:id",
+                "description":"Delete one task.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"id","content":"integer"}],
+                "body":[{"name":"none","content":"void"}],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[{"name":"none","content":"void"}]
+            }
+        ],
+        "put":[
+            {
+                "route":"/task/:id",
+                "description":"update task.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
+                "body":[
+                    {"name":"name","content":"string"},
+                    {"name":"description","content":"text"}
+                ],
+                "headers":[{"name":"authorization","content":"string"}],
+                "response":[
+                    {"name":"name","content":"string"},
+                    {"name":"description","content":"text"}
+                ]
+            },
+            {
+                "route":"/task/reverse/:id",
+                "description":"Done or undone a task.",
+                "format":"any",
+                "query":[{"name":"none","content":"void"}],
+                "params":[{"name":"none","content":"void"}],
                 "body":[{"name":"none","content":"void"}],
                 "headers":[{"name":"authorization","content":"string"}],
                 "response":[{"name":"none","content":"void"}]

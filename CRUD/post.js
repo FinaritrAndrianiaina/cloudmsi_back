@@ -80,5 +80,13 @@ module.exports = function (app, utils,models,uploads) {
         })
         .catch(()=>{utils.sendError(res,HTTP_STATUS.NOT_FOUND)})
     })
+
+    app.post("/task",utils.allowAccess(),(req,res)=>{
+        var obj={result:req.body}
+        obj.result.is_done=false
+        models.Task.create(obj.result)
+        .then(()=>{utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)})
+        .catch(()=>{utils.sendError(res)})
+    })
     
 }

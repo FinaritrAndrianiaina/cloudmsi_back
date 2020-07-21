@@ -72,20 +72,6 @@ module.exports = function (app, utils,models) {
         }).catch((err)=>{utils.sendError(res)})
     })
 
-    app.get("/project/:id",utils.allowAccess(), (req, res) => {
-        var obj={result:{}}
-        models.Project.findOne({where:{id:req.params.id}})
-        .then((data)=>{
-                if(!data)utils.sendError(res,HTTP_STATUS.NOT_FOUND)
-                else{
-                    var link={url:"https://api.github.com/repos/"+data.git_username+"/"+data.name}
-                    obj.result=link
-                    utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)
-                }
-        })
-        .catch(()=>{utils.sendError(res)})
-    })
-
     app.get("/file",utils.allowAccess(),(req,res)=>{
         var obj={result:{}}
         models.File.findAll()
@@ -106,5 +92,32 @@ module.exports = function (app, utils,models) {
             }
         }).catch((err)=>{utils.sendError(res,HTTP_STATUS.FORBIDDEN)})
     })
-    
+
+    app.get("/project/:id",utils.allowAccess(), (req, res) => {
+        var obj={result:{}}
+        models.Project.findOne({where:{id:req.params.id}})
+        .then((data)=>{
+                if(!data)utils.sendError(res,HTTP_STATUS.NOT_FOUND)
+                else{
+                    var link={url:"https://api.github.com/repos/"+data.git_username+"/"+data.name}
+                    obj.result=link
+                    utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)
+                }
+        })
+        .catch(()=>{utils.sendError(res)})
+    })
+
+    app.get("/project/task/:id",utils.allowAccess(), (req, res) => {
+        var obj={result:{}}
+        models.Task.findAll({where:{id_project:req.params.id}})
+        .then((data)=>{
+                if(!data)utils.sendError(res,HTTP_STATUS.NOT_FOUND)
+                else{
+                    obj.result=data
+                    utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)
+                }
+        })
+        .catch(()=>{utils.sendError(res)})
+    })
+
 }   

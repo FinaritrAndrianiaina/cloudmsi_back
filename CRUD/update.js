@@ -70,5 +70,25 @@ module.exports = function (app,utils,models,uploads) {
             }
         ])
     })
+
+    app.put("/task/:id",utils.allowAccess(), (req, res) => {
+        var obj={result:req.body}
+        var id=req.params.id
+        models.Task.update(obj.result,{where:{id:id}})
+        .then(()=>{utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)})
+        .catch(()=>{utils.sendError(res)})
+    })
+
+    app.put("/task/reverse/:id",utils.allowAccess(), (req, res) => {
+        var obj={result:req.body}
+        var id=req.params.id
+        models.Task.findOne({attributes:['is_done'],where:{id:id}})
+        .then((data)=>{
+            models.Task.update({is_done:!data.is_done},{where:{id:id}})
+            .then(()=>{utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)})
+            .catch(()=>{utils.sendError(res)})
+        }).catch(()=>{utils.sendError(res)})
+        
+    })
     
 }   
