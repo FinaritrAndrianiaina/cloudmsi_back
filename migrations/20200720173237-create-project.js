@@ -1,9 +1,8 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Files', {
+    return queryInterface.createTable('Projects', {
       id: {
-        unique:true,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -13,26 +12,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      type: {
+      git_username: {
         allowNull: false,
         type: Sequelize.STRING
       },
       id_user: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model:"Users",
-          key:"id"
-        }
-      },
-      path: {
-        unique:true,
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      size: {
-        allowNull: false,
-        type: Sequelize.DOUBLE
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -45,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Files');
+    return queryInterface.dropTable('Projects');
   }
 };

@@ -12,7 +12,10 @@ module.exports = function (app, utils,models,uploads) {
             obj.result.password=null
             utils.sendSuccess(res,obj,HTTP_STATUS.CREATED)
         })
-        .catch((err)=>{utils.sendError(res)})
+        .catch((err)=>{
+            if(err.original.code=='23505')utils.sendError(res,HTTP_STATUS.CONFLICT)
+            else utils.sendError(res)
+        })
     })
 
     app.post('/user/token',(req,res)=>{
@@ -43,33 +46,47 @@ module.exports = function (app, utils,models,uploads) {
         .catch((err)=>{utils.sendError(res)})
     })
 
-    app.post("/file",uploads.single('file'),(req, res) => {
-        if(utils.verifyHeaders(req.headers)){
-            var obj={result:{}}
-            var fs=require('fs')
-            var file=req.file
-            var path=file.destination+'/'+Date.now()+file.originalname
-            fs.renameSync(file.path,path)
-            obj.result={
-                name:file.originalname,
-                path:path,
-                id_user:req.body.id_user,
-                type:file.mimetype,
-                size:file.size
-            }
-            models.File.create(obj.result)
-            .then(()=>{
-                utils.sendSuccess(res,obj,HTTP_STATUS.CREATED)
-            })
-            .catch(()=>{
-                fs.unlinkSync(path)
-                utils.sendError(res)
-            })
-        }else{
-            fs.unlinkSync(req.file.path)
-            utils.sendError(res,HTTP_STATUS.UNAUTHORIZED)
-        } 
+    app.post("/file",utils.allowAccess(),uploads.single('file'),(req, res) => {
+        var obj={result:{}}
+        var fs=require('fs')
+        var file=req.file
+        var path=file.destination+'/'+Date.now()+file.originalname
+        fs.renameSync(file.path,path)
+        obj.result={
+            name:file.originalname,
+            path:path,
+            id_user:req.body.id_user,
+            type:file.mimetype,
+            size:file.size
+        }
+        models.File.create(obj.result)
+        .then(()=>{
+            utils.sendSuccess(res,obj,HTTP_STATUS.CREATED)
+        })
+        .catch(()=>{
+            fs.unlinkSync(path)
+            utils.sendError(res)
+        })
+    })
 
+    app.post("/project",utils.allowAccess(),(req,res)=>{
+        var obj={result:req.body}
+        var link="https://api.github.com/repos/"+req.body.git_username+"/"+req.body.name
+        require("axios").get(link)
+        .then(()=>{
+            models.Project.create(req.body)
+            .then(()=>{utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)})
+            .catch(()=>{utils.sendError(res)})
+        })
+        .catch(()=>{utils.sendError(res,HTTP_STATUS.NOT_FOUND)})
+    })
+
+    app.post("/task",utils.allowAccess(),(req,res)=>{
+        var obj={result:req.body}
+        obj.result.is_done=false
+        models.Task.create(obj.result)
+        .then(()=>{utils.sendSuccess(res,obj,HTTP_STATUS.ACCEPTED)})
+        .catch(()=>{utils.sendError(res)})
     })
     
 }

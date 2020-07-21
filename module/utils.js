@@ -5,7 +5,7 @@ const jwt=require("jsonwebtoken")
 
 module.exports = {
 
-    sendError: function (res,STATUS=HTTP_STATUS.INTERNAL_SERVER_ERROR) {
+    sendError: function (res,STATUS=HTTP_STATUS.FORBIDDEN) {
         res.status(STATUS.code).json({
             msg:STATUS.msg,
             code:STATUS.code
@@ -34,9 +34,15 @@ module.exports = {
             return true
         }catch{return false}
     },
-    verifyHeaders(headers){
+    verifyHeaders:function(headers){
         if(headers.authorization)
-           if(this.verifyToken(headers.authorization))return true
-        return false;
+               if(this.verifyToken(headers.authorization))return true
+            return false;
+    },
+    allowAccess:function(){
+        return (req,res,next)=>{
+           if(this.verifyHeaders(req.headers))next()
+           else this.sendError(res,HTTP_STATUS.UNAUTHORIZED)
+        }
     }
 }

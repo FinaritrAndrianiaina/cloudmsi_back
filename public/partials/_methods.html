@@ -21,10 +21,13 @@
                 <strong>
                     Params : 
                 </strong><br>
-                <div class="card blue-grey darken-1">
+                <div class="card blue-grey darken-4">
                     <div class="card-content white-text">
                         <div ng-repeat='tmp in item.params'>
-                            {{tmp}}
+                            <strong>{{tmp.name}}</strong> : 
+                            <span style="font-style: italic;" class="yellow-text">
+                                {{tmp.content}}
+                            </span> 
                         </div>
                     </div>
                 </div> 
@@ -33,40 +36,52 @@
                 <strong>
                     Headers : 
                 </strong><br>
-                <div class="card blue-grey darken-1">
+                <div class="card blue-grey darken-4">
                     <div class="card-content white-text">
                         <div ng-repeat='tmp in item.headers'>
-                            {{tmp}}
+                            <strong>{{tmp.name}}</strong> : 
+                            <span style="font-style: italic;" class="red-text">
+                                {{tmp.content}}
+                            </span> 
                         </div>
                     </div>
                 </div> 
             </li>
             <li>
                 <strong>Query : </strong><br>
-                <div class="card blue-grey darken-1">
+                <div class="card blue-grey darken-4">
                     <div class="card-content white-text">
                         <div ng-repeat='tmp in item.query'>
-                            {{tmp}}
+                            <strong>{{tmp.name}}</strong> : 
+                            <span style="font-style: italic;" class="green-text">
+                                {{tmp.content}}
+                            </span> 
                         </div>
                     </div>
                 </div> 
             </li>
             <li>
                 <strong>Body : </strong><br>
-                <div class="card blue-grey darken-1">
+                <div class="card blue-grey darken-4">
                     <div class="card-content white-text">
                         <div ng-repeat='tmp in item.body'>
-                            {{tmp}}
+                            <strong>{{tmp.name}}</strong> : 
+                            <span style="font-style: italic;" class="blue-text">
+                                {{tmp.content}}
+                            </span> 
                         </div>
                     </div>
                 </div>
             </li>
             <li>
                 <strong>Response : </strong><br>
-                <div class="card blue-grey darken-1">
+                <div class="card blue-grey darken-4">
                     <div class="card-content white-text">
                         <div ng-repeat='tmp in item.response'>
-                            {{tmp}}
+                            <strong>{{tmp.name}}</strong> : 
+                            <span style="font-style: italic;" class="orange-text">
+                                {{tmp.content}}
+                            </span> 
                         </div>
                     </div>
                 </div>
